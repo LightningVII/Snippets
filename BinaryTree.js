@@ -9,11 +9,11 @@
  * for (const i of arr) {
  *   BinaryTree.createTree(i, route)
  * }
- * BinaryTree.compareBinaryTree(route, key => list.push(key))
+ * BinaryTree.traverse(route, key => list.push(key))
  * console.log(list)
  *
  */
-class BinaryTree {
+export default class BinaryTree {
   constructor (param) {
     this.key = param || null
     this.left = null
@@ -35,9 +35,9 @@ class BinaryTree {
     }
   }
 
-  static compareBinaryTree (node, action) {
-    node.left && BinaryTree.compareBinaryTree(node.left, action)
+  static traverse (node, action) {
+    node.left && BinaryTree.traverse(node.left, action)
     action(node.key)
-    node.right && BinaryTree.compareBinaryTree(node.right, action)
+    node.right && BinaryTree.traverse(node.right, action)
   }
 }
